@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Yashasvi Allen Kujur</title>
+    <style>
+        /* General styles */
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #2c3e50, #4ca1af);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav li {
+            display: inline;
+        }
+        
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffd700;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2ecc71;
+        }
+        
+        .skills,
+        .projects {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .skills h2,
+        .projects h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .skills-container,
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .skill,
+        .project {
+            width: 200px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            animation: slideIn 1s;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        footer a {
+            color: #4ca1af;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+        <ul class="nav">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+    <div class="hero">
+        <h1>Hi, I'm Yashasvi Allen Kujur</h1>
+        <p>An Undergraduate Computer Science and Engineering student at SRMIST, passionate about software development and tech.</p> <button class="btn">Learn More</button>
+    </div>
+    <section id="skills" class="skills">
+        <h2>Key Skills</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <h3>Java</h3>
+                <p>Developing desktop utilities, backend systems, and automation scripts.</p>
+            </div>
+            <div class="skill">
+                <h3>Python</h3>
+                <p>Creating Discord bots, web scrapers, and backend systems.</p>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="project">
+                <h3>Meeting Auto-Joiner</h3>
+                <p>A utility to auto-join scheduled meetings seamlessly. <br><a href="https://github.com/JavaProgswing/Meeting-automation" target="_blank">View on GitHub</a>
+                </p>
+            </div>
+            <div class="project">
+                <h3>Uni Wi-Fi Login</h3>
+                <p>Automates logging into university Wi-Fi networks. <br><a href="https://github.com/JavaProgswing/SRM-WIFI-Login" target="_blank">View on GitHub</a> </p>
+            </div>
+            <div class="project">
+                <h3>ChatGPT Automation</h3>
+                <p>A Python-based script that can programmatically control ChatGPT through Selenium. <br><a href="https://github.com/JavaProgswing/ChatGPTSeleniumAutomation" target="_blank">View on
+                        GitHub</a> </p>
+            </div>
+            <div class="project">
+                <h3>Valorant Narrator</h3>
+                <p>A Java-based desktop app that enhances Valorant gameplay by converting real-time game chat messages into voice. It supports customizable voices, including Valorant in-game agent voices. <br><a href="https://github.com/JavaProgswing/valorantnarratorOPS"
+                        target="_blank">View on GitHub</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="utilities" class="projects">
+        <h2>Utility Sites</h2>
+        <div class="projects-container">
+            <div class="project">
+                <h3>Meeting Auto-Joiner</h3>
+                <p>A utility to auto-join scheduled meetings seamlessly.
+                    <br><a href="https://github.com/JavaProgswing/Meeting-automation" target="_blank">View on GitHub</a>
+                </p>
+            </div>
+            <div class="project">
+                <h3>Uni Wi-Fi Login</h3>
+                <p>Automates logging into university Wi-Fi networks.
+                    <br><a href="https://github.com/JavaProgswing/SRM-WIFI-Login" target="_blank">View on GitHub</a>
+                </p>
+            </div>
+            <div class="project">
+                <h3>ChatGPT Automation</h3>
+                <p>A Python-based script that can programmatically control ChatGPT through Selenium.
+                    <br><a href="https://github.com/JavaProgswing/ChatGPTSeleniumAutomation" target="_blank">View on
+                        GitHub</a>
+                </p>
+            </div>
+            <div class="project">
+                <h3>Music Streamer</h3>
+                <br>
+                <form id="music-form">
+                    <a id="searchLink" href="#" target="_blank">Search</a>
+                    <input type="text" id="searchVideoName" name="searchVideoName" placeholder="Enter video name">
+                    <br><br>
+                    <a id="playLink" href="#" target="_blank">Play</a>
+                    <input type="text" id="playVideoId" name="playVideoId" placeholder="Enter video ID">
+                    <br><br>
+                    <a id="downloadLink" href="#" target="_blank">Download</a>
+                    <input type="text" id="downloadVideoId" name="downloadVideoId" placeholder="Enter video ID">
+                    <br><br>
+                    <button type="button" onclick="updateLinks()">Update Links</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        function updateLinks() {
+            const searchVideoName = document.getElementById('searchVideoName').value;
+            const playVideoId = document.getElementById('playVideoId').value;
+            const downloadVideoId = document.getElementById('downloadVideoId').value;
+
+            document.getElementById('searchLink').href = `/stream-music/search?video_name=${encodeURIComponent(searchVideoName)}`;
+            document.getElementById('playLink').href = `/stream-music/play?id=${encodeURIComponent(playVideoId)}`;
+            document.getElementById('downloadLink').href = `/stream-music/download?video_id=${encodeURIComponent(downloadVideoId)}`;
+        }
+    </script>
+    <footer id="contact">
+        <p>Connect with me on <a href="https://github.com/JavaProgswing">GitHub</a> | <a href="mailto:yashasviallen@gmail.com">Email</a></p>
+    </footer>
+</body>
+
+</html>
