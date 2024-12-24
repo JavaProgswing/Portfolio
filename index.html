@@ -145,6 +145,15 @@
             color: #4ca1af;
             text-decoration: none;
         }
+
+        #hero-description {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            white-space: pre-wrap; /* Preserves line breaks */
+            min-height: 150px; /* Prevents layout shift during typing */
+        }
     </style>
 </head>
 
@@ -159,7 +168,8 @@
     </header>
     <div class="hero">
         <h1>Hi, I'm Yashasvi Allen Kujur</h1>
-        <p>An Undergraduate Computer Science and Engineering student at SRMIST, passionate about software development and tech.</p> <button class="btn">Learn More</button>
+        <p id="hero-description">An Undergraduate Computer Science and Engineering student at SRMIST, passionate about software development and tech.</p>
+        <button class="btn" onclick="revealAboutMe()">Learn More</button>
     </div>
     <section id="skills" class="skills">
         <h2>Key Skills</h2>
@@ -204,55 +214,120 @@
         <h2>Utility Sites</h2>
         <div class="projects-container">
             <div class="project">
-                <h3>Meeting Auto-Joiner</h3>
-                <p>A utility to auto-join scheduled meetings seamlessly.
-                    <br><a href="https://github.com/JavaProgswing/Meeting-automation" target="_blank">View on GitHub</a>
-                </p>
+                <h3>Public File Server</h3>
+                <p>Access and browse shared files: <a href="/file-server/" target="_blank" >/file-server</a></p>
             </div>
             <div class="project">
-                <h3>Uni Wi-Fi Login</h3>
-                <p>Automates logging into university Wi-Fi networks.
-                    <br><a href="https://github.com/JavaProgswing/SRM-WIFI-Login" target="_blank">View on GitHub</a>
-                </p>
+                <h3>File Uploader</h3>
+                <p>Upload a file to generate a public sharable URL: <a href="/file-upload" target="_blank" >/file-upload</a></p>
             </div>
-            <div class="project">
-                <h3>ChatGPT Automation</h3>
-                <p>A Python-based script that can programmatically control ChatGPT through Selenium.
-                    <br><a href="https://github.com/JavaProgswing/ChatGPTSeleniumAutomation" target="_blank">View on
-                        GitHub</a>
-                </p>
-            </div>
-            <div class="project">
-                <h3>Music Streamer</h3>
-                <br>
-                <form id="music-form">
-                    <a id="searchLink" href="#" target="_blank">Search</a>
-                    <input type="text" id="searchVideoName" name="searchVideoName" placeholder="Enter video name">
-                    <br><br>
-                    <a id="playLink" href="#" target="_blank">Play</a>
-                    <input type="text" id="playVideoId" name="playVideoId" placeholder="Enter video ID">
-                    <br><br>
-                    <a id="downloadLink" href="#" target="_blank">Download</a>
-                    <input type="text" id="downloadVideoId" name="downloadVideoId" placeholder="Enter video ID">
-                    <br><br>
-                    <button type="button" onclick="updateLinks()">Update Links</button>
-                </form>
+        <div class="project">
+            <h3>Download YouTube Content</h3>
+            <p>Search for a YouTube video or enter a video ID to proceed:</p>
+            <form id="search-or-id-form" onsubmit="handleSearchOrId(event)">
+                <label for="searchQuery">Search Video:</label>
+                <input type="text" id="searchQuery" name="searchQuery" placeholder="Enter video name">
+                <br><br>
+                <label for="videoId">Or Enter Video ID:</label>
+                <input type="text" id="videoId" name="videoId" placeholder="Enter video ID">
+                <br><br>
+                <button type="submit" class="btn">Search/Submit</button>
+            </form>
+            <div id="options-container" style="display: none; margin-top: 20px; padding: 20px; color: #fff; border-radius: 10px;">
+                <div id="video-thumbnail" style="position: relative; background-size: cover; background-position: center; height: 200px; border-radius: 10px;">
+                    <h4 id="video-title" style="margin: 10px; padding: 10px; background: rgba(0, 0, 0, 0.7); border-radius: 5px;"></h4>
+                </div>
+                <p id="video-duration" style="margin-bottom: 20px;"></p>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <a id="downloadAudioLink" href="#" target="_blank" class="btn" style="flex: 1; text-align: center;">Download as Audio</a>
+                    <a id="downloadVideoLink" href="#" target="_blank" class="btn" style="flex: 1; text-align: center;">Download as Video</a>
+                </div>
             </div>
         </div>
+    </div>
     </section>
-    <script>
-        function updateLinks() {
-            const searchVideoName = document.getElementById('searchVideoName').value;
-            const playVideoId = document.getElementById('playVideoId').value;
-            const downloadVideoId = document.getElementById('downloadVideoId').value;
+<script>
+function revealAboutMe() {
+    const heroDescription = document.getElementById('hero-description');
+    const aboutMeContent = `
+        An Undergraduate Computer Science and Engineering student at SRMIST, passionate about software development and tech.
+        Having made multiple projects in Java, Python. Always ready to learn new technologies.
+        
+        Currently knowing Desktop app development(JavaFX), Android app development(Java), Website Backend(Python [FastAPI, Quart, Flask], Java [Quarkus]), Website Frontend(Vanilla JS, HTML, CSS), Networking(Nginx, Apache).
+        
+        Achievements:
+            - Winner of the Elevator Java Event (2022) 
+              organized by Together Java.
+            - 2nd Place in the Pythonista Monthly Challenges event
+              hosted by the Python Discord community.
+    `;
 
-            document.getElementById('searchLink').href = `/stream-music/search?video_name=${encodeURIComponent(searchVideoName)}`;
-            document.getElementById('playLink').href = `/stream-music/play?id=${encodeURIComponent(playVideoId)}`;
-            document.getElementById('downloadLink').href = `/stream-music/download?video_id=${encodeURIComponent(downloadVideoId)}`;
+    let index = 0;
+    heroDescription.textContent = '';
+
+    const typeText = () => {
+        if (index < aboutMeContent.length) {
+            heroDescription.textContent += aboutMeContent[index];
+            index++;
+            setTimeout(typeText, 30);
         }
-    </script>
+    };
+
+    typeText();
+}
+
+    async function handleSearchOrId(event) {
+        event.preventDefault();
+        const searchQuery = document.getElementById('searchQuery').value.trim();
+        const videoId = document.getElementById('videoId').value.trim();
+
+        if (!searchQuery && !videoId) {
+            alert('Please enter a search query or a video ID.');
+            return;
+        }
+        document.getElementById('videoId').value = ''
+        document.getElementById('searchQuery').value = ''
+        
+        let videoData = null;
+
+        if (searchQuery) {
+            // Call the search endpoint
+            try {
+                const response = await fetch(`/stream-music/search?video_name=${encodeURIComponent(searchQuery)}`);
+                if (!response.ok) throw new Error('Search failed');
+                videoData = await response.json();
+            } catch (error) {
+                console.error('Error during search:', error);
+                alert('An error occurred while searching. Please try again.');
+                return;
+            }
+        } else {
+            // Use the video ID directly
+            videoData = { id: videoId, title: "YouTube Video", thumbnail_url: "", duration: "Unknown" };
+        }
+
+        if (!videoData.id) {
+            alert('No video found.');
+            return;
+        }
+
+        // Update options
+        document.getElementById('video-title').textContent = videoData.title;
+        document.getElementById('video-duration').textContent = `Duration: ${videoData.duration} seconds`;
+        document.getElementById('video-thumbnail').style.backgroundImage = `url('${videoData.thumbnail_url}')`;
+
+        const audioUrl = `/stream-music/download?video_id=${encodeURIComponent(videoData.id)}`;
+        const videoUrl = `/stream-music/download_video?video_id=${encodeURIComponent(videoData.id)}`;
+
+        document.getElementById('downloadAudioLink').href = audioUrl;
+        document.getElementById('downloadVideoLink').href = videoUrl;
+
+        // Show options
+        document.getElementById('options-container').style.display = 'block';
+    }
+</script>
     <footer id="contact">
-        <p>Connect with me on <a href="https://github.com/JavaProgswing">GitHub</a> | <a href="mailto:yashasviallen@gmail.com">Email</a></p>
+        <p>Connect with me on <a href="https://www.linkedin.com/in/yashasvi-allen-kujur-ba5a1533b/">LinkedIn</a> | <a href="https://github.com/JavaProgswing">GitHub</a> | <a href="mailto:yashasviallen@gmail.com">Email</a></p>
     </footer>
 </body>
 
